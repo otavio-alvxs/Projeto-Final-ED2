@@ -1,10 +1,7 @@
-package dao;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
-import model.Livro;
 
 public class LivroDAO {
 

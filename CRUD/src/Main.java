@@ -1,6 +1,4 @@
 import java.util.Scanner;
-import dao.*;
-import model.*;
 
 public class Main {
     private static Scanner scanner = new Scanner(System.in);

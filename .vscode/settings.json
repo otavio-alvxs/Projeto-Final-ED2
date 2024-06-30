@@ -1,0 +1,10 @@
+{
+    "java.project.sourcePaths": [
+        "CRUD/src",
+        "CRUD/src/dao",
+        "CRUD/src/model"
+    ],
+    "java.project.referencedLibraries": [
+        "CRUD/lib/mariadb-java-client-3.4.0.jar"
+    ]
+}
