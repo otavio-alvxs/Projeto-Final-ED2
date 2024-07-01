@@ -38,12 +38,13 @@ public class LivroDAO {
                 String titulo = resultados.getString("titulo");
                 String autor = resultados.getString("autor");
                 String anoPub = resultados.getString("anoPub");
-                int id = resultados.getInt("id");
+                Boolean disponivel = resultados.getBoolean("disponivel");
+                int id = resultados.getInt("idLivro");
 
-                Livro obj = new Livro(titulo, autor, anoPub);
+                Livro obj = new Livro(titulo, autor, anoPub, disponivel);
                 obj.setIdLivro(id);
                 lista.add(obj);
-            }
+            } new ConectaDB().desconectaDB();
 
             for (Livro livro : lista) {
                 System.out.println("\nID: " + livro.getId());
@@ -59,7 +60,7 @@ public class LivroDAO {
 
     public Livro consultar(int id) {
         Livro obj = null;
-        String sql = "SELECT * FROM livro WHERE id = ?";
+        String sql = "SELECT * FROM livro WHERE idLivro = ?";
         try {
             PreparedStatement pst = conexao.getConexaoDB().prepareStatement(sql);
             pst.setInt(1, id);
@@ -69,11 +70,12 @@ public class LivroDAO {
                 String titulo = resultados.getString("titulo");
                 String anoPub = resultados.getString("anoPub");
                 String autor = resultados.getString("autor");
-                obj = new Livro(titulo, anoPub, autor);
+                Boolean disponivel = resultados.getBoolean("disponivel");
+                obj = new Livro(titulo, anoPub, autor, disponivel);
                 obj.setIdLivro(id);
             } else {
                 System.out.println("Livro não encontrado");
-            }
+            } new ConectaDB().desconectaDB();
 
         } catch (SQLException e) {
             System.out.println("Falha na consulta: " + e.getMessage());
@@ -83,7 +85,7 @@ public class LivroDAO {
     }
 
     public void excluir(int id) {
-        String sql = "DELETE FROM livro WHERE id = ?";
+        String sql = "DELETE FROM livro WHERE idLivro = ?";
         try {
             PreparedStatement pst = conexao.getConexaoDB().prepareStatement(sql);
             pst.setInt(1, id);
@@ -92,11 +94,11 @@ public class LivroDAO {
 
         } catch (SQLException e) {
             System.out.println("Falha na exclusão: " + e.getMessage());
-        }
+        } new ConectaDB().desconectaDB();
     }
 
     public void alterar(Livro livro) {
-        String sql = "UPDATE livro SET titulo = ?, anoPub = ?, autor = ? WHERE id = ?";
+        String sql = "UPDATE livro SET titulo = ?, anoPub = ?, autor = ? WHERE idLivro = ?";
         try {
             PreparedStatement pst = conexao.getConexaoDB().prepareStatement(sql);
             pst.setString(1, livro.getTitulo());
@@ -113,6 +115,6 @@ public class LivroDAO {
 
         } catch (SQLException e) {
             System.out.println("Falha na atualização: " + e.getMessage());
-        }
+        } new ConectaDB().desconectaDB();
     }
 }

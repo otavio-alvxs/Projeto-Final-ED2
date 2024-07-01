@@ -1,10 +1,10 @@
 {
     "java.project.sourcePaths": [
-        "CRUD/src",
         "CRUD/src/dao",
-        "CRUD/src/model"
+        "CRUD/src/model",
+        "CRUD/src/service"
     ],
     "java.project.referencedLibraries": [
-        "CRUD/lib/mariadb-java-client-3.4.0.jar"
+        "/home/phoenix/repositories/Projeto-Final-ED2/CRUD/lib/mariadb-java-client-3.4.0.jar"
     ]
 }

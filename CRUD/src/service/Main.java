@@ -1,5 +1,5 @@
-import java.util.Scanner;
 
+import java.util.Scanner;
 public class Main {
     private static Scanner scanner = new Scanner(System.in);
 
@@ -10,6 +10,7 @@ public class Main {
             System.out.println("\n\nMenu:");
             System.out.println("1. Gerenciar Tabela Usuário");
             System.out.println("2. Gerenciar Tabela Livro");
+            System.out.println("3. Gerenciar Empréstimos");
             System.out.println("0. Sair");
             System.out.print("Digite sua opção: ");
 
@@ -66,7 +67,7 @@ public class Main {
                     System.out.print("Digite o ano de publicação do livro: ");
                     anoPub = scanner.next();
     
-                    Livro novoLivro = new Livro(titulo, autor, anoPub);
+                    Livro novoLivro = new Livro(titulo, autor, anoPub, true);
                     livroDAO.inserir(novoLivro);
                     System.out.println("Livro " + titulo + " inserido com sucesso!");
                     break;

@@ -2,6 +2,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
+
 public class UsuarioDAO {
 
     private ConectaDB conexao;
@@ -21,8 +22,8 @@ public class UsuarioDAO {
             System.out.println("Inserção ok: " + usuario);
         }catch (Exception e){
             System.out.println("Falha na inserção: " + e.getMessage());
-        }
-    }
+        } new ConectaDB().desconectaDB();
+    } 
 
     public void consultarTodos() {
         String sql = "SELECT * FROM usuario";
@@ -32,7 +33,7 @@ public class UsuarioDAO {
             ResultSet resultados = pst.executeQuery();
 
             while (resultados.next()) {
-                int id = resultados.getInt("id");
+                int id = resultados.getInt("idUsuario");
                 String nome = resultados.getString("nome");
                 String email = resultados.getString("email");
 
@@ -48,11 +49,11 @@ public class UsuarioDAO {
             }
         }catch (Exception e){
             System.out.println("Falha na consulta: " + e.getMessage());
-        }
+        } new ConectaDB().desconectaDB();
     }
     public Usuario consultarID(int id){
         Usuario obj = null;
-        String sql = "SELECT * FROM usuario WHERE id = ?";
+        String sql = "SELECT * FROM usuario WHERE idUsuario = ?";
         try {
             PreparedStatement pst = conexao.getConexaoDB().prepareStatement(sql);
             pst.setInt(1, id);
@@ -70,12 +71,12 @@ public class UsuarioDAO {
             }
         }catch (SQLException e){
             System.out.println("Falha na consulta: " + e.getMessage());
-        }
+        } new ConectaDB().desconectaDB();
         return obj;
     }
 
     public void excluir(int id){
-        String sql = "DELETE FROM usuario WHERE id = ?";
+        String sql = "DELETE FROM usuario WHERE idUsuario = ?";
         try{
             PreparedStatement pst = conexao.getConexaoDB().prepareStatement(sql);
             pst.setInt(1, id);
@@ -83,11 +84,11 @@ public class UsuarioDAO {
             System.out.println("Usuario excluido com sucesso");
         } catch (SQLException e) {
             System.out.println("Falha na exclulsão: " + e.getMessage());
-        }
+        } new ConectaDB().desconectaDB();
     }
 
     public void alterar(Usuario usuario){
-        String sql = "UPDATE usuario SET nome = ?, email = ? WHERE id = ?";
+        String sql = "UPDATE usuario SET nome = ?, email = ? WHERE idUsuario = ?";
         try {
             PreparedStatement pst = conexao.getConexaoDB().prepareStatement(sql);
             pst.setString(1, usuario.getNome());
@@ -103,6 +104,6 @@ public class UsuarioDAO {
             }
         } catch (SQLException e) {
             System.out.println("Falha na atualização: " + e.getMessage());
-        }
+        } new ConectaDB().desconectaDB();
     }
 }
