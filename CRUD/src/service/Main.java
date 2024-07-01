@@ -50,12 +50,13 @@ public class Main {
             System.out.println("3. Remover Livro");
             System.out.println("4. Consultar Livro por ID");
             System.out.println("5. Listar Todos os Livros");
+            System.out.println("6. Verificar disponibilidade do Livro");
             System.out.println("0. Voltar ao Menu Principal");
             System.out.print("Digite sua opção: ");
     
             opcao = scanner.nextInt();
     
-            if (opcao < 0 || opcao > 5) {
+            if (opcao < 0 || opcao > 6) {
                 System.out.println("Opção inválida! Digite novamente: ");
                 opcao = scanner.nextInt();
             }
@@ -80,7 +81,11 @@ public class Main {
                 case 5:
                     BibliotecaService.listarLivros();
                     break;
-    
+                
+                case 6:
+                    BibliotecaService.verificaDisponibilidade();
+                    break;
+
                 case 0:
                     System.out.println("Voltando ao Menu Principal...");
                     break;

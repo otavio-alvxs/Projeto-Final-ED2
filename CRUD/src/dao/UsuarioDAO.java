@@ -22,7 +22,7 @@ public class UsuarioDAO {
             System.out.println("Inserção ok: " + usuario);
         }catch (Exception e){
             System.out.println("Falha na inserção: " + e.getMessage());
-        } new ConectaDB().desconectaDB();
+        } 
     } 
 
     public void consultarTodos() {
@@ -49,7 +49,7 @@ public class UsuarioDAO {
             }
         }catch (Exception e){
             System.out.println("Falha na consulta: " + e.getMessage());
-        } new ConectaDB().desconectaDB();
+        } 
     }
     public Usuario consultarID(int idUsuario){
         Usuario obj = null;
@@ -71,7 +71,7 @@ public class UsuarioDAO {
             }
         }catch (SQLException e){
             System.out.println("Falha na consulta: " + e.getMessage());
-        } new ConectaDB().desconectaDB();
+        } 
         return obj;
     }
 
@@ -84,7 +84,7 @@ public class UsuarioDAO {
             System.out.println("Usuario excluido com sucesso");
         } catch (SQLException e) {
             System.out.println("Falha na exclulsão: " + e.getMessage());
-        } new ConectaDB().desconectaDB();
+        } 
     }
 
     public void alterar(Usuario usuario){
@@ -104,6 +104,6 @@ public class UsuarioDAO {
             }
         } catch (SQLException e) {
             System.out.println("Falha na atualização: " + e.getMessage());
-        } new ConectaDB().desconectaDB();
+        } 
     }
 }

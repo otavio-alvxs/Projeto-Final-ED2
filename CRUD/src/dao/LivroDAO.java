@@ -24,7 +24,7 @@ public class LivroDAO {
 
         } catch (Exception e) {
             System.out.println("Falha na inserção: " + e.getMessage());
-        } new ConectaDB().desconectaDB();
+        } 
     }
 
     public void consultarTodos() {
@@ -44,7 +44,7 @@ public class LivroDAO {
                 Livro obj = new Livro(titulo, autor, anoPub, disponivel);
                 obj.setIdLivro(id);
                 lista.add(obj);
-            } new ConectaDB().desconectaDB();
+            } 
 
             for (Livro livro : lista) {
                 System.out.println("\nID: " + livro.getId());
@@ -75,7 +75,7 @@ public class LivroDAO {
                 obj.setIdLivro(id);
             } else {
                 System.out.println("Livro não encontrado");
-            } new ConectaDB().desconectaDB();
+            } 
 
         } catch (SQLException e) {
             System.out.println("Falha na consulta: " + e.getMessage());
@@ -94,7 +94,7 @@ public class LivroDAO {
 
         } catch (SQLException e) {
             System.out.println("Falha na exclusão: " + e.getMessage());
-        } new ConectaDB().desconectaDB();
+        } 
     }
 
     public void alterar(Livro livro) {
@@ -115,6 +115,15 @@ public class LivroDAO {
 
         } catch (SQLException e) {
             System.out.println("Falha na atualização: " + e.getMessage());
-        } new ConectaDB().desconectaDB();
+        } 
+    }
+
+    public void verificaDisponibilidade(int idLivro){
+        Livro obj = consultar(idLivro);
+        if (obj.getDisponivel() == true){
+            System.out.println("O livro está disponível para empréstimo!");
+        } else {
+            System.out.println("O livro não está disponível para empréstimo!");
+        }
     }
 }

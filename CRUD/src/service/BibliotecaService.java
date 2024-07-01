@@ -21,7 +21,7 @@ public class BibliotecaService {
         Livro novoLivro = new Livro(titulo, autor, anoPub, true);
         livroDAO.inserir(novoLivro);
         System.out.println("Livro " + titulo + " inserido com sucesso!");
-    }
+    } 
 
     public static void alterarLivro(){
         System.out.print("Digite o ID do livro a ser alterado: ");
@@ -169,5 +169,11 @@ public class BibliotecaService {
     public static void consultarTodosEmprestimos(){
         System.out.println("\nListando todos os empréstimos: ");
         emprestimoDAO.consultarTodosEmprestimos();
+    }
+
+    public static void verificaDisponibilidade(){
+        System.out.println("Digite o ID do Livro: ");
+        idLivro = scanner.nextInt();
+        livroDAO.verificaDisponibilidade(idLivro);
     }
 }

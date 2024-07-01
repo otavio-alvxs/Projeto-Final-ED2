@@ -14,10 +14,6 @@ public class EmprestimoDAO {
         this.conexao = new ConectaDB();
     }
 
-    public void verificaDisponibilidade(){
-        
-    }
-
     public void inserirEmprestimo(Emprestimo emprestimo) {
         String sql = "INSERT INTO emprestimo(idLivro,idUsuario,dataEmprestimo,dataDevolucao) VALUES(?,?,?,?)";
         try {
@@ -32,7 +28,7 @@ public class EmprestimoDAO {
 
         } catch (Exception e) {
             System.out.println("Falha na inserção: " + e.getMessage());
-        } new ConectaDB().desconectaDB();
+        } 
     }
 
     public void devolverLivro(Emprestimo emprestimo){
@@ -50,7 +46,7 @@ public class EmprestimoDAO {
 
         } catch (SQLException e) {
             System.out.println("Falha na devolução: " + e.getMessage());
-        } new ConectaDB().desconectaDB();
+        } 
     }
 
     public Emprestimo consultarEmprestimoID(int idEmprestimo) {
@@ -70,7 +66,7 @@ public class EmprestimoDAO {
                 obj.setIdEmprestimo(idEmprestimo);
             } else {
                 System.out.println("Empréstimo não encontrado");
-            } new ConectaDB().desconectaDB();
+            } 
 
         } catch (SQLException e) {
             System.out.println("Falha na consulta: " + e.getMessage());
@@ -104,9 +100,6 @@ public class EmprestimoDAO {
                     emprestimosUsuario.put(idUsuario, emprestimosList);
                 }
             }
-
-            new ConectaDB().desconectaDB();
-
             for (Map.Entry<Integer, List<Emprestimo>> entry : emprestimosUsuario.entrySet()) {
                 int usuarioId = entry.getKey();
                 List<Emprestimo> emprestimosList = entry.getValue();
