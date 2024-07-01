@@ -33,16 +33,16 @@ public class UsuarioDAO {
             ResultSet resultados = pst.executeQuery();
 
             while (resultados.next()) {
-                int id = resultados.getInt("idUsuario");
+                int idUsuario = resultados.getInt("idUsuario");
                 String nome = resultados.getString("nome");
                 String email = resultados.getString("email");
 
                 Usuario obj = new Usuario(nome, email);
-                obj.setId(id);
+                obj.setidUsuario(idUsuario);
                 lista.add(obj);
             }
             for (Usuario usuario : lista) {
-                System.out.println("ID: " + usuario.getId());
+                System.out.println("ID: " + usuario.getidUsuario());
                 System.out.println("Nome: " + usuario.getNome());
                 System.out.println("Email: " + usuario.getEmail());
                 System.out.println("-------------------------");
@@ -51,19 +51,19 @@ public class UsuarioDAO {
             System.out.println("Falha na consulta: " + e.getMessage());
         } new ConectaDB().desconectaDB();
     }
-    public Usuario consultarID(int id){
+    public Usuario consultarID(int idUsuario){
         Usuario obj = null;
         String sql = "SELECT * FROM usuario WHERE idUsuario = ?";
         try {
             PreparedStatement pst = conexao.getConexaoDB().prepareStatement(sql);
-            pst.setInt(1, id);
+            pst.setInt(1, idUsuario);
             ResultSet resultados = pst.executeQuery();
             if (resultados.next()){
                 String nome = resultados.getString("nome");
                 String email = resultados.getString("email");
                 
                 obj = new Usuario(nome, email);
-                obj.setId(id);
+                obj.setidUsuario(idUsuario);
                 obj.setNome(nome);
                 obj.setEmail(email);
             } else {
@@ -93,7 +93,7 @@ public class UsuarioDAO {
             PreparedStatement pst = conexao.getConexaoDB().prepareStatement(sql);
             pst.setString(1, usuario.getNome());
             pst.setString(2, usuario.getEmail());
-            pst.setInt(3, usuario.getId());
+            pst.setInt(3, usuario.getidUsuario());
 
             int resultado = pst.executeUpdate();
             if (resultado > 0){

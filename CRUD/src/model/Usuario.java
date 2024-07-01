@@ -1,5 +1,5 @@
 public class Usuario {
-    private int id;
+    private int idUsuario;
     private String nome;
     private String email;
 
@@ -8,8 +8,8 @@ public class Usuario {
         this.setEmail(email);
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setidUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public void setNome(String nome) {
@@ -20,8 +20,8 @@ public class Usuario {
         this.email = email;
     }
 
-    public int getId() {
-        return this.id;
+    public int getidUsuario() {
+        return this.idUsuario;
     }
 
     public String getNome() {
@@ -33,7 +33,7 @@ public class Usuario {
     }
 
     public String toString() {
-        return "Id: " + getId() + " Nome: " + getNome() + " E-mail: " + getEmail();
+        return "idUsuario: " + getidUsuario() + " Nome: " + getNome() + " E-mail: " + getEmail();
     }
 
 }

@@ -1,11 +1,16 @@
-import java.sql.Date;
-
 public class Emprestimo {
     private int idEmprestimo;
-    private String titulo;
-    private String usuario;
-    private Date dataEmprestimo;
-    private Date dataDevolucao;
+    private int idLivro;
+    private int idUsuario;
+    private String dataEmprestimo;
+    private String dataDevolucao;
+
+    public Emprestimo(int idLivro, int idUsuario, String dataEmprestimo, String dataDevolucao){
+        this.setidLivro(idLivro);
+        this.setidUsuario(idUsuario);
+        this.setDataEmprestimo(dataEmprestimo);
+        this.setDataDevolucao(dataDevolucao);
+    };
 
     public int getIdEmprestimo() {
         return idEmprestimo;
@@ -14,31 +19,31 @@ public class Emprestimo {
         this.idEmprestimo = idEmprestimo;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public int getidLivro() {
+        return idLivro;
     }
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setidLivro(int idLivro) {
+        this.idLivro = idLivro;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public int getidUsuario() {
+        return idUsuario;
     }
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setidUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
     
-    public Date getDataEmprestimo() {
+    public String getDataEmprestimo() {
         return dataEmprestimo;
     }
-    public void setDataEmprestimo(Date dataEmprestimo) {
+    public void setDataEmprestimo(String dataEmprestimo) {
         this.dataEmprestimo = dataEmprestimo;
     }
 
-    public Date getDataDevolucao() {
+    public String getDataDevolucao() {
         return dataDevolucao;
     }
-    public void setDataDevolucao(Date dataDevolucao) {
+    public void setDataDevolucao(String dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
     }
 }
